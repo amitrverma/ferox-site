@@ -51,7 +51,7 @@ export default function Navbar() {
         className="shrink-0"
       />
       <h1 className="text-2xl md:text-4xl font-extrabold leading-tight tracking-tight">
-        Ferox Tech Services
+        ferox tech services
       </h1>
     </div>
 

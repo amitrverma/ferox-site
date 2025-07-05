@@ -1,8 +1,46 @@
-// src/components/Solutions.tsx
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function Solutions() {
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const loading = toast.loading('Sending request...');
+
+    const res = await fetch('/api/form/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'demo', data: formData }),
+    });
+
+    toast.dismiss(loading);
+
+    if (res.ok) {
+      toast.success('Demo request sent!');
+      setFormData({ name: '', email: '', company: '', message: '' });
+      setShowModal(false);
+    } else {
+      toast.error('Failed to send. Try again.');
+    }
+  };
+
   return (
     <section
       id="solutions"
@@ -14,7 +52,10 @@ export default function Solutions() {
           <h2 className="text-5xl font-bold leading-snug">
             Our <span className="text-yellow-400">AI-enhanced<br />solutions</span> are designed<br /> to create substantial value<br /> for your business
           </h2>
-          <button className="mt-10 bg-yellow-400 text-black px-8 py-3 rounded font-semibold text-lg w-max">
+          <button
+            onClick={() => setShowModal(true)}
+            className="mt-10 bg-yellow-400 text-black px-8 py-3 rounded font-semibold text-lg w-max"
+          >
             Ask for Demo
           </button>
         </div>
@@ -22,8 +63,8 @@ export default function Solutions() {
         {/* Right Solution Cards */}
         <div className="space-y-12 text-lg leading-relaxed">
           {/* FeroxPrompt */}
-          <div className="flex gap-6 items-start">
-            <Image src="/assets/prompt.png" alt="FeroxPrompt" width={80} height={80} />
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <Image src="/assets/prompt.png" alt="FeroxPrompt" width={150} height={150} className="w-[150px] h-[150px] object-contain" />
             <div>
               <h3 className="text-blue-300 font-bold text-2xl mb-2">FeroxPrompt</h3>
               <p>
@@ -37,8 +78,8 @@ export default function Solutions() {
           </div>
 
           {/* FeroxFlo */}
-          <div className="flex gap-6 items-start">
-            <Image src="/assets/flo.png" alt="FeroxFlo" width={100} height={100} />
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <Image src="/assets/flo.png" alt="FeroxFlo" width={150} height={150} className="w-[150px] h-[150px] object-contain" />
             <div>
               <h3 className="text-blue-300 font-bold text-2xl mb-2">FeroxFlo</h3>
               <p>
@@ -52,8 +93,8 @@ export default function Solutions() {
           </div>
 
           {/* FeroxMomentum */}
-          <div className="flex gap-6 items-start">
-            <Image src="/assets/momentum.png" alt="FeroxMomentum" width={100} height={100} />
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <Image src="/assets/momentum.png" alt="FeroxMomentum" width={150} height={150} className="w-[150px] h-[150px] object-contain" />
             <div>
               <h3 className="text-blue-300 font-bold text-2xl mb-2">FeroxMomentum</h3>
               <p>
@@ -67,6 +108,63 @@ export default function Solutions() {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center px-4">
+          <div className="bg-white text-black p-8 rounded-lg w-full max-w-lg space-y-4 relative">
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-3 right-4 text-xl font-bold text-gray-600 hover:text-black"
+            >
+              ×
+            </button>
+            <h3 className="text-2xl font-bold mb-4">Request a Demo</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 rounded border"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 rounded border"
+              />
+              <input
+                type="text"
+                name="company"
+                placeholder="Company"
+                value={formData.company}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded border"
+              />
+              <textarea
+                name="message"
+                placeholder="What would you like to explore?"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className="w-full px-4 py-2 rounded border"
+              />
+              <button
+                type="submit"
+                className="w-full bg-yellow-400 text-black py-2 rounded font-semibold hover:bg-yellow-300 transition"
+              >
+                Submit Request
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

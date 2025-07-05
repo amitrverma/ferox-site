@@ -53,23 +53,24 @@ export default function Services() {
         </div>
 
         {/* Right Grid of Service Cards */}
-        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12 text-lg leading-relaxed">
-          {services.map((service, idx) => (
-            <div key={idx} className="flex gap-4 items-start">
-              <Image
-                src={service.icon}
-                alt={service.title}
-                width={100}
-                height={100}
-                className="shrink-0"
-              />
-              <div>
-                <h3 className="text-blue-300 font-bold text-xl mb-2">{service.title}</h3>
-                <p>{service.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+<div className="grid sm:grid-cols-2 gap-x-12 gap-y-12 text-lg leading-relaxed">
+  {services.map((service, idx) => (
+    <div key={idx} className="flex flex-col sm:flex-row gap-6 items-start">
+      <Image
+        src={service.icon}
+        alt={service.title}
+        width={150}
+        height={150}
+        className="shrink-0"
+      />
+      <div>
+        <h3 className="text-blue-300 font-bold text-xl mb-2">{service.title}</h3>
+        <p>{service.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
       </div>
     </section>
   );

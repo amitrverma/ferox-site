@@ -1,4 +1,44 @@
+'use client';
+
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+
 export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const loadingToast = toast.loading('Sending your message...');
+
+    const res = await fetch('/api/form/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: 'contact', data: formData })
+    });
+
+    toast.dismiss(loadingToast);
+    const result = await res.json();
+
+    if (result.success) {
+      toast.success('Message sent successfully!');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      toast.error('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -7,7 +47,6 @@ export default function ContactForm() {
       <div className="grid md:grid-cols-2 gap-16 w-full">
         {/* Left Side: Heading + Region Cards */}
         <div className="flex flex-col justify-center w-full">
-          {/* Centered Heading */}
           <div className="text-center mb-14">
             <h2 className="text-5xl font-bold">
               We <span className="text-yellow-400">love our customers</span> <span>😊</span>
@@ -18,7 +57,6 @@ export default function ContactForm() {
             </p>
           </div>
 
-          {/* Region Cards */}
           <div className="grid sm:grid-cols-3 gap-6 text-center text-lg">
             {/* North America */}
             <div>
@@ -74,11 +112,13 @@ export default function ContactForm() {
             Contact <span className="text-yellow-400">Us</span>
           </h2>
 
-          <form className="w-full max-w-md space-y-5 text-lg">
+          <form onSubmit={handleSubmit} className="w-full max-w-md space-y-5 text-lg">
             <input
               type="text"
               name="name"
               placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
               className="w-full bg-white text-black px-5 py-3 rounded"
               required
             />
@@ -86,6 +126,8 @@ export default function ContactForm() {
               type="email"
               name="email"
               placeholder="Your Email"
+              value={formData.email}
+              onChange={handleChange}
               className="w-full bg-white text-black px-5 py-3 rounded"
               required
             />
@@ -93,12 +135,16 @@ export default function ContactForm() {
               type="text"
               name="subject"
               placeholder="Subject"
+              value={formData.subject}
+              onChange={handleChange}
               className="w-full bg-white text-black px-5 py-3 rounded"
             />
             <textarea
               name="message"
               rows={4}
               placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
               className="w-full bg-white text-black px-5 py-3 rounded"
               required
             ></textarea>

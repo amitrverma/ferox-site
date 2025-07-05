@@ -25,8 +25,8 @@ export default function AzureSecurity() {
             <Image
               src="/assets/iso.png"
               alt="ISO 27001 Certified"
-              width={80}
-              height={80}
+              width={150}
+              height={150}
               className="shrink-0 mt-1"
             />
             <div>
@@ -44,8 +44,8 @@ export default function AzureSecurity() {
             <Image
               src="/assets/azure.png"
               alt="Azure Logo"
-              width={80}
-              height={80}
+              width={150}
+              height={150}
               className="shrink-0 mt-1"
             />
             <div>
