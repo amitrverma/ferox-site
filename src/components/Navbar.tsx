@@ -37,21 +37,31 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow">
-  <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    {/* Logo + Brand: Aligned to left */}
-    <div className="flex items-center gap-2 text-xl font-bold text-black">
-      <Image src="/assets/Ferox logo.png" alt="Ferox logo" width={50} height={50} />
-      <h1>Ferox Tech Services</h1>
+    <header className="fixed top-0 left-0 w-full z-50 bg-black shadow">
+  <div className="w-full px-6 py-4 flex items-center justify-between">
+
+    
+    {/* Left: Logo + Brand */}
+    <div className="flex items-center gap-4 text-white">
+      <Image
+        src="/assets/Ferox logo.png"
+        alt="Ferox logo"
+        width={64}
+        height={64}
+        className="shrink-0"
+      />
+      <h1 className="text-2xl md:text-4xl font-extrabold leading-tight tracking-tight">
+        Ferox Tech Services
+      </h1>
     </div>
 
-    {/* Desktop Menu: Aligned to right */}
-    <nav className="hidden md:flex gap-6 text-gray-700 ml-auto">
+    {/* Right: Desktop Menu */}
+    <nav className="hidden md:flex items-center gap-8 ml-auto text-white text-lg">
       {navItems.map((item) => (
         <a
           key={item.href}
           href={item.href}
-          className={`hover:text-black transition-colors duration-200 ${
+          className={`hover:text-yellow-400 transition-colors duration-200 ${
             activeSection === item.href
               ? "text-yellow-400 font-semibold border-b-2 border-yellow-400 pb-1"
               : ""
@@ -64,7 +74,7 @@ export default function Navbar() {
 
     {/* Mobile Toggle */}
     <button
-      className="md:hidden text-gray-700"
+      className="md:hidden text-white text-3xl ml-auto"
       onClick={handleToggle}
       aria-label="Toggle Menu"
     >
@@ -95,6 +105,7 @@ export default function Navbar() {
     </nav>
   )}
 </header>
+
 
   );
 }

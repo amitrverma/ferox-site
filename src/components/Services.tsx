@@ -37,14 +37,14 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="w-full bg-black text-white px-6 md:px-16 py-16 flex items-center"
+      className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex items-center"
     >
-      <div className="grid md:grid-cols-2 gap-12 w-full">
+      <div className="grid md:grid-cols-2 gap-16 w-full">
         {/* Left Headline Block */}
         <div className="flex flex-col justify-center">
-          <h2 className="text-4xl md:text-5xl font-light leading-snug">
+          <h2 className="text-5xl font-bold leading-snug">
             Our services are <br />
-            <span className="text-yellow-400 font-semibold">
+            <span className="text-yellow-400 font-bold">
               backed by<br />experienced colleagues
             </span><br />
             from various domains,<br />
@@ -53,13 +53,19 @@ export default function Services() {
         </div>
 
         {/* Right Grid of Service Cards */}
-        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12">
+        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-12 text-lg leading-relaxed">
           {services.map((service, idx) => (
             <div key={idx} className="flex gap-4 items-start">
-              <Image src={service.icon} alt={service.title} width={80} height={80} />
+              <Image
+                src={service.icon}
+                alt={service.title}
+                width={100}
+                height={100}
+                className="shrink-0"
+              />
               <div>
-                <h3 className="text-blue-300 font-semibold">{service.title}</h3>
-                <p className="text-white">{service.desc}</p>
+                <h3 className="text-blue-300 font-bold text-xl mb-2">{service.title}</h3>
+                <p>{service.desc}</p>
               </div>
             </div>
           ))}

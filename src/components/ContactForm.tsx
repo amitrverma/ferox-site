@@ -2,33 +2,33 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-16 flex items-center"
+      className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex items-center"
     >
-      <div className="grid md:grid-cols-2 gap-12 w-full">
+      <div className="grid md:grid-cols-2 gap-16 w-full">
         {/* Left Side: Heading + Region Cards */}
         <div className="flex flex-col justify-center w-full">
           {/* Centered Heading */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-semibold">
+          <div className="text-center mb-14">
+            <h2 className="text-5xl font-bold">
               We <span className="text-yellow-400">love our customers</span> <span>😊</span>
             </h2>
-            <p className="text-2xl mt-4 text-white/90">
-              We will be happy to meet you in person or virtually <br />
-              feel free to reach us on -
+            <p className="text-2xl mt-6 text-white/90 leading-relaxed">
+              We will be happy to meet you in person or virtually. <br />
+              Feel free to reach us on —
             </p>
           </div>
 
           {/* Region Cards */}
-          <div className="grid sm:grid-cols-3 gap-6 text-center">
+          <div className="grid sm:grid-cols-3 gap-6 text-center text-lg">
             {/* North America */}
             <div>
-              <div className="bg-yellow-400 text-black font-bold py-2 text-lg mb-2">
+              <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
                 North America
               </div>
               <p className="font-semibold text-yellow-400">Call Us On:</p>
               <p className="font-bold text-white">+1-609-819-7762</p>
               <p className="font-bold text-white">+1-609-664-8687</p>
-              <p className="mt-2 font-bold text-yellow-400">Ferox Consulting LLC</p>
+              <p className="mt-3 font-bold text-yellow-400">Ferox Consulting LLC</p>
               <p>
                 <span className="font-semibold">Address:</span> <br />
                 5213 Wessex PL,<br />
@@ -38,13 +38,13 @@ export default function ContactForm() {
 
             {/* United Kingdom */}
             <div>
-              <div className="bg-yellow-400 text-black font-bold py-2 text-lg mb-2">
+              <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
                 United Kingdom
               </div>
               <p className="font-semibold text-yellow-400">Call Us On:</p>
-              <p className="font-bold text-red-500">+1-609-819-7762 /</p>
-              <p className="font-bold text-red-500">+1-609-664-8687</p>
-              <p className="mt-2 font-bold text-yellow-400">SheSparks</p>
+              <p className="font-bold text-white">+1-609-819-7762</p>
+              <p className="font-bold text-white">+1-609-664-8687</p>
+              <p className="mt-3 font-bold text-yellow-400">SheSparks</p>
               <p>
                 <span className="font-semibold">Address:</span> United Kingdom
               </p>
@@ -54,13 +54,13 @@ export default function ContactForm() {
 
             {/* Rest of the world */}
             <div>
-              <div className="bg-yellow-400 text-black font-bold py-2 text-lg mb-2">
+              <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
                 Rest of the world
               </div>
               <p className="font-semibold text-yellow-400">Call Us On:</p>
               <p className="font-bold text-white">+91 9899985453</p>
               <p className="font-bold text-white">+91 8826630055</p>
-              <p className="mt-2 font-bold text-yellow-400">Ferox Tech Services</p>
+              <p className="mt-3 font-bold text-yellow-400">Ferox Tech Services</p>
               <p>
                 <span className="font-semibold">Address:</span> Pune, Maharashtra
               </p>
@@ -70,41 +70,41 @@ export default function ContactForm() {
 
         {/* Right Side: Contact Form */}
         <div className="flex flex-col justify-center items-start">
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-5xl font-bold mb-8">
             Contact <span className="text-yellow-400">Us</span>
           </h2>
 
-          <form className="w-full max-w-md space-y-4">
+          <form className="w-full max-w-md space-y-5 text-lg">
             <input
               type="text"
               name="name"
               placeholder="Your Name"
-              className="w-full bg-white text-black px-4 py-2 rounded"
+              className="w-full bg-white text-black px-5 py-3 rounded"
               required
             />
             <input
               type="email"
               name="email"
               placeholder="Your Email"
-              className="w-full bg-white text-black px-4 py-2 rounded"
+              className="w-full bg-white text-black px-5 py-3 rounded"
               required
             />
             <input
               type="text"
               name="subject"
               placeholder="Subject"
-              className="w-full bg-white text-black px-4 py-2 rounded"
+              className="w-full bg-white text-black px-5 py-3 rounded"
             />
             <textarea
               name="message"
               rows={4}
               placeholder="Your Message"
-              className="w-full bg-white text-black px-4 py-2 rounded"
+              className="w-full bg-white text-black px-5 py-3 rounded"
               required
             ></textarea>
             <button
               type="submit"
-              className="w-full bg-yellow-400 text-black py-2 rounded font-semibold hover:bg-yellow-300"
+              className="w-full bg-yellow-400 text-black py-3 rounded font-semibold hover:bg-yellow-300 transition-all"
             >
               Send Message
             </button>
