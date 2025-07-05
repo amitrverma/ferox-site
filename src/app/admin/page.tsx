@@ -4,9 +4,30 @@ import { useEffect, useState } from 'react';
 
 type SubmissionType = 'contacts' | 'demos' | 'resumes';
 
+interface BaseSubmission {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  submittedAt: string;
+  data?: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
+    subject?: string;
+  };
+}
+
+interface ResumeSubmission extends BaseSubmission {
+  resumeUrl?: string;
+}
+
+type Submission = BaseSubmission | ResumeSubmission;
+
 export default function AdminPage() {
   const [type, setType] = useState<SubmissionType>('contacts');
-  const [submissions, setSubmissions] = useState<any[]>([]);
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -68,7 +89,7 @@ export default function AdminPage() {
                 <p><strong>Email:</strong> {s.email || s.data?.email || '—'}</p>
                 <p><strong>Phone:</strong> {s.phone || s.data?.phone || '—'}</p>
                 <p><strong>Message:</strong> {s.message || s.data?.message || s.data?.subject || '—'}</p>
-                {type === 'resumes' && s.resumeUrl && (
+                {type === 'resumes' && 'resumeUrl' in s && s.resumeUrl && (
                   <p>
                     <strong>Resume:</strong>{' '}
                     <a

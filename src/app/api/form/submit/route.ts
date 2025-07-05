@@ -4,8 +4,21 @@ import { v4 as uuidv4 } from 'uuid';
 
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING!;
 
-// Strongly typed allowed form types
 type FormType = 'contact' | 'demo';
+
+interface ContactOrDemoData {
+  name: string;
+  email: string;
+  phone?: string;
+  message?: string;
+  subject?: string;
+}
+
+interface FormPayload {
+  type: FormType;
+  data: ContactOrDemoData;
+}
+
 const containerMap: Record<FormType, string> = {
   contact: 'contacts',
   demo: 'demos',
@@ -13,7 +26,7 @@ const containerMap: Record<FormType, string> = {
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json() as { type: FormType; data: any };
+    const body = await req.json() as FormPayload;
     const { type, data } = body;
 
     const containerName = containerMap[type] || 'contacts';

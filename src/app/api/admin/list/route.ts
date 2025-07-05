@@ -3,6 +3,28 @@ import { BlobServiceClient } from '@azure/storage-blob';
 
 const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STRING!;
 
+// Submission Types
+interface BaseSubmission {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  submittedAt: string;
+  data?: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    message?: string;
+    subject?: string;
+  };
+}
+
+interface ResumeSubmission extends BaseSubmission {
+  resumeUrl?: string;
+}
+
+type Submission = BaseSubmission | ResumeSubmission;
+
 // Helper to convert NodeJS.ReadableStream to string
 async function streamToString(readableStream: NodeJS.ReadableStream): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -16,14 +38,14 @@ async function streamToString(readableStream: NodeJS.ReadableStream): Promise<st
 export async function GET(req: NextRequest) {
   try {
     const url = new URL(req.url);
-    const type = url.searchParams.get('type') || 'contacts'; // 'contacts' or 'demos'
+    const type = url.searchParams.get('type') || 'contacts';
 
     const blobServiceClient = BlobServiceClient.fromConnectionString(
       AZURE_STORAGE_CONNECTION_STRING
     );
     const containerClient = blobServiceClient.getContainerClient(type);
 
-    const result: any[] = [];
+    const result: Submission[] = [];
 
     for await (const blob of containerClient.listBlobsFlat({ prefix: 'metadata/' })) {
       const client = containerClient.getBlobClient(blob.name);
