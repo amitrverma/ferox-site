@@ -87,9 +87,39 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             Grow a rewarding career with <br />
             <span className="text-yellow-400">ferox tech services</span>
           </h2>
-          <div className="space-y-6 text-lg leading-relaxed">
-            {/* ... Job tracks as-is ... */}
-          </div>
+<div className="space-y-6 text-lg leading-relaxed">
+  <div>
+    <h3 className="text-yellow-400 font-semibold text-xl">Customer Services Expertise</h3>
+    <p>
+      We help you build a rewarding career in customer service, email, chat, and contact center operations. Work with industry experts and leaders in the field.
+    </p>
+  </div>
+  <div>
+    <h3 className="text-yellow-400 font-semibold text-xl">Finance & Accounts and Financial Services</h3>
+    <p>
+      We have deep domain expertise in Finance and Accounting operations. Kick-start your journey in F&A operations with a set of exciting opportunities.
+    </p>
+  </div>
+  <div>
+    <h3 className="text-yellow-400 font-semibold text-xl">Health Care & Insurance</h3>
+    <p>
+      Our leaders bring decades of experience managing complex insurance businesses, including healthcare processing for North America geographies. Explore opportunities with us.
+    </p>
+  </div>
+  <div>
+    <h3 className="text-yellow-400 font-semibold text-xl">Project Management</h3>
+    <p>
+      With over 40+ years of combined experience in project & program management services, we will help you build your skills and master project management.
+    </p>
+  </div>
+  <div>
+    <h3 className="text-yellow-400 font-semibold text-xl">Automation</h3>
+    <p>
+      We integrate automation in everything we do. Join us to become a brand ambassador of how technology can support human decision-making and enhance customer outcomes.
+    </p>
+  </div>
+</div>
+
         </div>
 
         {/* Right: Form */}

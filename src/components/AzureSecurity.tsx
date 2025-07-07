@@ -21,7 +21,7 @@ export default function AzureSecurity() {
         {/* Right Content Blocks */}
         <div className="flex flex-col gap-12 text-lg leading-relaxed">
           {/* ISO 27001 Block */}
-          <div className="flex gap-6 items-start">
+          <div className="flex flex-col md:flex-row gap-6 items-start">
             <Image
               src="/assets/iso.png"
               alt="ISO 27001 Certified"
@@ -40,7 +40,7 @@ export default function AzureSecurity() {
           </div>
 
           {/* Azure Block */}
-          <div className="flex gap-6 items-start">
+          <div className="flex flex-col md:flex-row gap-6 items-start">
             <Image
               src="/assets/azure.png"
               alt="Azure Logo"
