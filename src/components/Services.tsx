@@ -39,7 +39,7 @@ export default function Services() {
       id="services"
       className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex items-center"
     >
-      <div className="grid md:grid-cols-2 gap-16 w-full">
+      <div className="grid md:grid-cols-2 w-full">
         {/* Left Headline Block */}
         <div className="flex flex-col justify-center">
           <h2 className="text-5xl font-bold leading-snug">
