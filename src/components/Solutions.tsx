@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaDownload } from "react-icons/fa";
 
 export default function Solutions() {
   const [showModal, setShowModal] = useState(false);
@@ -41,6 +42,30 @@ export default function Solutions() {
     }
   };
 
+  const solutions = [
+  {
+    icon: "/assets/prompt.png",
+    title: "FeroxPrompt",
+    desc: "An AI-enhanced content writing solution designed for your website and marketing requirements, equipped with SEO capabilities and human assistance. Take your products live in hours.",
+    highlights: "Achieve 50X faster market readiness | Cut costs by 50% | Ensure 100% brand consistency",
+    whitepaper: "/whitepapers/feroxprompt.pdf",
+  },
+  {
+    icon: "/assets/flo.png",
+    title: "FeroxFlo",
+    desc: "AI enabled workflow solution to track and monitor your work queues, analytics for improved customer journeys & enhanced productivity. Seamless integration to existing platforms lending further automation opportunities.",
+    highlights: "50% Improved customer experience | 20% Increased efficiency | 15% Reduced costs",
+    whitepaper: "", // No whitepaper
+  },
+  {
+    icon: "/assets/momentum.png",
+    title: "FeroxMomentum",
+    desc: "Offering real-time monitoring and precise management tailored to your business requirements, along with intelligent analytics and reporting to aid in informed decision-making.",
+    highlights: "1.5X Productive workforce | 2X Faster decisions | 15% Reduced costs",
+    whitepaper: "",
+  },
+];
+
   return (
     <section
       id="solutions"
@@ -62,51 +87,36 @@ export default function Solutions() {
 
         {/* Right Solution Cards */}
         <div className="space-y-12 text-lg leading-relaxed">
-          {/* FeroxPrompt */}
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            <Image src="/assets/prompt.png" alt="FeroxPrompt" width={150} height={150} className="w-[150px] h-[150px] object-contain" />
-            <div>
-              <h3 className="text-blue-300 font-bold text-2xl mb-2">FeroxPrompt</h3>
-              <p>
-                An AI-enhanced content writing solution designed for your website and marketing requirements,
-                equipped with SEO capabilities and human assistance. Take your products live in hours.
-              </p>
-              <p className="text-yellow-400 mt-3 font-medium">
-                Achieve 50X faster market readiness | Cut costs by 50% | Ensure 100% brand consistency
-              </p>
-            </div>
-          </div>
+  {solutions.map((solution, idx) => (
+    <div key={idx} className="flex flex-col md:flex-row gap-6 items-start">
+      <div className="flex flex-col items-center md:items-start">
+        <Image
+          src={solution.icon}
+          alt={solution.title}
+          width={150}
+          height={150}
+          className="w-[150px] h-[150px] object-contain"
+        />
+        {solution.whitepaper && solution.whitepaper.trim() !== "" && (
+          <a
+            href={solution.whitepaper}
+            download
+            className="mt-2 flex items-center gap-2 text-sm text-white hover:underline"
+          >
+            <FaDownload />
+            <span> Whitepaper</span>
+          </a>
+        )}
+      </div>
+      <div>
+        <h3 className="text-yellow-400 font-bold text-2xl mb-2">{solution.title}</h3>
+        <p>{solution.desc}</p>
+        <p className="text-yellow-400 mt-3 font-medium">{solution.highlights}</p>
+      </div>
+    </div>
+  ))}
+</div>
 
-          {/* FeroxFlo */}
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            <Image src="/assets/flo.png" alt="FeroxFlo" width={150} height={150} className="w-[150px] h-[150px] object-contain" />
-            <div>
-              <h3 className="text-blue-300 font-bold text-2xl mb-2">FeroxFlo</h3>
-              <p>
-                AI enabled workflow solution to track and monitor your work queues, analytics for improved
-                customer journeys & enhanced productivity. Seamless integration to existing platforms lending further automation opportunities
-              </p>
-              <p className="text-yellow-400 mt-3 font-medium">
-                50% Improved customer experience | 20% Increased efficiency | 15% Reduced costs
-              </p>
-            </div>
-          </div>
-
-          {/* FeroxMomentum */}
-          <div className="flex flex-col md:flex-row gap-6 items-start">
-            <Image src="/assets/momentum.png" alt="FeroxMomentum" width={150} height={150} className="w-[150px] h-[150px] object-contain" />
-            <div>
-              <h3 className="text-blue-300 font-bold text-2xl mb-2">FeroxMomentum</h3>
-              <p>
-                Offering real-time monitoring and precise management tailored to your business requirements,
-                along with intelligent analytics and reporting to aid in informed decision-making.
-              </p>
-              <p className="text-yellow-400 mt-3 font-medium">
-                1.5X Productive workforce | 2X Faster decisions | 15% Reduced costs
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Modal */}
