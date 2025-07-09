@@ -42,73 +42,73 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex items-center"
+      className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex flex-col items-center"
     >
+      {/* Top Heading */}
+      <div className="text-center mb-16 w-full">
+        <h2 className="text-5xl font-bold">
+          We <span className="text-yellow-400">love our customers</span> <span>😊</span>
+        </h2>
+        <p className="text-2xl mt-6 text-white/90 leading-relaxed">
+          We will be happy to meet you in person or virtually. 
+          Feel free to reach us on —
+        </p>
+      </div>
+
+      {/* 2-Column Layout */}
       <div className="grid md:grid-cols-2 gap-16 w-full">
-        {/* Left Side: Heading + Region Cards */}
-        <div className="flex flex-col justify-center w-full">
-          <div className="text-center mb-14">
-            <h2 className="text-5xl font-bold">
-              We <span className="text-yellow-400">love our customers</span> <span>😊</span>
-            </h2>
-            <p className="text-2xl mt-6 text-white/90 leading-relaxed">
-              We will be happy to meet you in person or virtually. <br />
-              Feel free to reach us on —
+        {/* Left: Region Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center text-lg w-full">
+          {/* North America */}
+          <div>
+            <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
+              North America
+            </div>
+            <p className="font-semibold text-yellow-400">Call Us On:</p>
+            <p className="font-bold text-white">+1-609-819-7762</p>
+            <p className="font-bold text-white">+1-609-664-8687</p>
+            <p className="mt-3 font-bold text-yellow-400">Ferox Consulting LLC</p>
+            <p>
+              <span className="font-semibold">Address:</span> <br />
+              5213 Wessex PL,<br />
+              Princeton NJ 0854000000
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-6 text-center text-lg">
-            {/* North America */}
-            <div>
-              <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
-                North America
-              </div>
-              <p className="font-semibold text-yellow-400">Call Us On:</p>
-              <p className="font-bold text-white">+1-609-819-7762</p>
-              <p className="font-bold text-white">+1-609-664-8687</p>
-              <p className="mt-3 font-bold text-yellow-400">Ferox Consulting LLC</p>
-              <p>
-                <span className="font-semibold">Address:</span> <br />
-                5213 Wessex PL,<br />
-                Princeton NJ 0854000000
-              </p>
+          {/* United Kingdom */}
+          <div>
+            <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
+              United Kingdom
             </div>
+            <p className="font-semibold text-yellow-400">Call Us On:</p>
+            <p className="font-bold text-white">+1-609-819-7762</p>
+            <p className="font-bold text-white">+1-609-664-8687</p>
+            <p className="mt-3 font-bold text-yellow-400">SheSparks</p>
+            <p>
+              <span className="font-semibold">Address:</span> United Kingdom
+            </p>
+            <p className="text-white underline">hello@she-sparks.co.uk</p>
+            <p className="text-white underline">www.she-sparks.co.uk</p>
+          </div>
 
-            {/* United Kingdom */}
-            <div>
-              <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
-                United Kingdom
-              </div>
-              <p className="font-semibold text-yellow-400">Call Us On:</p>
-              <p className="font-bold text-white">+1-609-819-7762</p>
-              <p className="font-bold text-white">+1-609-664-8687</p>
-              <p className="mt-3 font-bold text-yellow-400">SheSparks</p>
-              <p>
-                <span className="font-semibold">Address:</span> United Kingdom
-              </p>
-              <p className="text-white underline">hello@she-sparks.co.uk</p>
-              <p className="text-white underline">www.she-sparks.co.uk</p>
+          {/* Rest of the world */}
+          <div>
+            <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
+              Rest of the world
             </div>
-
-            {/* Rest of the world */}
-            <div>
-              <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
-                Rest of the world
-              </div>
-              <p className="font-semibold text-yellow-400">Call Us On:</p>
-              <p className="font-bold text-white">+91 9899985453</p>
-              <p className="font-bold text-white">+91 8826630055</p>
-              <p className="mt-3 font-bold text-yellow-400">Ferox Tech Services</p>
-              <p>
-                <span className="font-semibold">Address:</span> Pune, Maharashtra
-              </p>
-            </div>
+            <p className="font-semibold text-yellow-400">Call Us On:</p>
+            <p className="font-bold text-white">+91 9899985453</p>
+            <p className="font-bold text-white">+91 8826630055</p>
+            <p className="mt-3 font-bold text-yellow-400">Ferox Tech Services</p>
+            <p>
+              <span className="font-semibold">Address:</span> Pune, Maharashtra
+            </p>
           </div>
         </div>
 
-        {/* Right Side: Contact Form */}
+        {/* Right: Contact Form */}
         <div className="flex flex-col justify-center items-start">
-          <h2 className="text-5xl font-bold mb-8">
+          <h2 className="text-4xl font-bold mb-8">
             Contact <span className="text-yellow-400">Us</span>
           </h2>
 
