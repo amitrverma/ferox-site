@@ -79,31 +79,41 @@ export default function Solutions() {
 
       {/* Solution Cards - 3 Column Grid */}
       <div className="grid md:grid-cols-3 gap-12 text-lg leading-relaxed">
-        {solutions.map((solution, idx) => (
-          <div key={idx} className="flex flex-col items-start gap-4">
-            <Image
-              src={solution.icon}
-              alt={solution.title}
-              width={150}
-              height={150}
-              className="w-[150px] h-[150px] object-contain"
-            />
-            {solution.whitepaper && solution.whitepaper.trim() !== "" && (
-              <a
-                href={solution.whitepaper}
-                download
-                className="mt-2 flex items-center gap-2 text-sm text-white hover:underline"
-              >
-                <FaDownload />
-                <span>Whitepaper</span>
-              </a>
-            )}
-            <h3 className="text-yellow-400 font-bold text-2xl">{solution.title}</h3>
-            <p>{solution.desc}</p>
-            <p className="text-yellow-400 mt-2 font-medium">{solution.highlights}</p>
-          </div>
-        ))}
+  {solutions.map((solution, idx) => (
+    <div key={idx} className="flex flex-col items-start h-full">
+      {/* Fixed image height */}
+      <div className="h-[150px] w-full flex items-center justify-start">
+        <Image
+          src={solution.icon}
+          alt={solution.title}
+          width={150}
+          height={150}
+          className="object-contain"
+        />
       </div>
+
+      {/* Whitepaper + Title */}
+      <div className="mt-4">
+        {solution.whitepaper && solution.whitepaper.trim() !== "" && (
+          <a
+            href={solution.whitepaper}
+            download
+            className="mb-2 flex items-center gap-2 text-sm text-white hover:underline"
+          >
+            <FaDownload />
+            <span>Whitepaper</span>
+          </a>
+        )}
+        <h3 className="text-yellow-400 font-bold text-2xl mb-2">{solution.title}</h3>
+      </div>
+
+      {/* Description and Highlights */}
+      <p>{solution.desc}</p>
+      <p className="text-yellow-400 mt-2 font-medium">{solution.highlights}</p>
+    </div>
+  ))}
+</div>
+
 
       {/* Modal */}
       {showModal && (

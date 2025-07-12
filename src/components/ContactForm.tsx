@@ -80,9 +80,7 @@ export default function ContactForm() {
             <div className="bg-yellow-400 text-black font-bold py-2 text-xl mb-3">
               United Kingdom
             </div>
-            <p className="font-semibold text-yellow-400">Call Us On:</p>
-            <p className="font-bold text-white">+1-609-819-7762</p>
-            <p className="font-bold text-white">+1-609-664-8687</p>
+
             <p className="mt-3 font-bold text-yellow-400">SheSparks</p>
             <p>
               <span className="font-semibold">Address:</span> United Kingdom
@@ -98,7 +96,6 @@ export default function ContactForm() {
             </div>
             <p className="font-semibold text-yellow-400">Call Us On:</p>
             <p className="font-bold text-white">+91 9899985453</p>
-            <p className="font-bold text-white">+91 8826630055</p>
             <p className="mt-3 font-bold text-yellow-400">Ferox Tech Services</p>
             <p>
               <span className="font-semibold">Address:</span> Pune, Maharashtra

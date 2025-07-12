@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from 'next/link';
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,18 +44,18 @@ export default function Navbar() {
 
     
     {/* Left: Logo + Brand */}
-    <div className="flex items-center gap-4 text-white">
-      <Image
-        src="/assets/Ferox logo.png"
-        alt="Ferox logo"
-        width={64}
-        height={64}
-        className="shrink-0"
-      />
-      <h1 className="text-2xl md:text-4xl font-extrabold leading-tight tracking-tight">
-        ferox tech services
-      </h1>
-    </div>
+<Link href="/" className="flex items-center gap-4 text-white cursor-pointer">
+  <Image
+    src="/assets/Ferox logo.png"
+    alt="Ferox logo"
+    width={64}
+    height={64}
+    className="shrink-0"
+  />
+  <h1 className="text-2xl md:text-4xl font-extrabold leading-tight tracking-tight">
+    ferox tech services
+  </h1>
+</Link>
 
     {/* Right: Desktop Menu */}
     <nav className="hidden md:flex items-center gap-8 ml-auto text-white text-lg">

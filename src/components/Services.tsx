@@ -48,29 +48,25 @@ export default function Services() {
       className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex flex-col items-center"
     >
       {/* Heading */}
-      <div className="text-center mb-16 w-full">
-        <h2 className="text-5xl font-bold leading-snug">
-          Our services are 
-          <span className="text-yellow-400"> backed by experienced colleagues</span> <br />
-          from various domains, guaranteeing robust operational delivery!
-        </h2>
-      </div>
-
-      {/* 3-column Grid (full-width like Solutions) */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
   {services.map((service, idx) => (
     <div
       key={idx}
-      className="flex flex-col h-full gap-4 items-start"
+      className="flex flex-col items-start h-full"
     >
-      <Image
-        src={service.icon}
-        alt={service.title}
-        width={150}
-        height={150}
-        className="object-contain"
-      />
-      <div>
+      {/* Fixed height wrapper for consistent alignment */}
+      <div className="h-[150px] flex items-center justify-center">
+        <Image
+          src={service.icon}
+          alt={service.title}
+          width={100}
+          height={100}
+          className="object-contain"
+        />
+      </div>
+
+      {/* Title and Description Block */}
+      <div className="mt-4">
         <h3 className="text-yellow-400 font-bold text-xl mb-2">{service.title}</h3>
         <p className="text-white leading-relaxed">{service.desc}</p>
         {service.whitepaper && service.whitepaper.trim() !== '' && (
@@ -87,6 +83,7 @@ export default function Services() {
     </div>
   ))}
 </div>
+
 
     </section>
   );
