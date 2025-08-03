@@ -48,6 +48,11 @@ export default function Services() {
       className="min-h-screen w-full bg-black text-white px-6 md:px-16 py-20 flex flex-col items-center"
     >
       {/* Heading */}
+            <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold leading-snug">
+          Our services are  <span className="text-yellow-400">backed by experienced colleagues </span> <br/>from various domains, guaranteeing robust operational delivery!
+        </h2>
+      </div>
   <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
   {services.map((service, idx) => (
     <div
